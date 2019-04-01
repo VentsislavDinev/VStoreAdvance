@@ -1,11 +1,12 @@
-﻿using HostingStore.Products;
+﻿using Abp.Application.Services;
+using HostingStore.Products;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace VAgency.Service.User.Company
 {
-    public interface ICompanyLogoService
+    public interface ICompanyLogoService : IApplicationService
     {
         Task<CompanyLogo> Create(string filePath,  string title);
 

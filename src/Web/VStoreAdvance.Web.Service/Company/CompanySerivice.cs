@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Abp.Application.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ using VAgency.Services.Static;
 
 namespace VStoreAdvance.Web.Service.Company
 {
-    public class CompanySerivice : ICompanySerivice
+    public class CompanySerivice : ApplicationService, ICompanySerivice
     {
 
         private IContact _contact;

@@ -68,12 +68,12 @@ namespace VStoreAdvance.Web.Controllers
 
             PageViewModel page = new PageViewModel
             {
-                ListProductBrand = await _orderProduct.ListBrandByProduct(),
+                ListProductBrand =  _orderProduct.ListBrandByProduct(),
 
-                ListAllCategoryWithSubCategory = await _productOrderCategoryService.ListAllCategoryWithSubCategory(),
-                ProductPromoHome = await _productPromoHome.OrderProduct(),
-                SpecificationDetails = await _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
-                Specification = await _productSpecificationService.ProductSpecification(),
+                ListAllCategoryWithSubCategory = _productOrderCategoryService.ListAllCategoryWithSubCategory(),
+                ProductPromoHome =  _productPromoHome.OrderProduct(),
+                SpecificationDetails =  _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
+                Specification =  _productSpecificationService.ProductSpecification(),
                 StaticPage = _companySerivice.Page.GetAll().Select(x => new StaticPageViewModel
                 {
                     Name = x.Name,
@@ -121,25 +121,27 @@ namespace VStoreAdvance.Web.Controllers
             int projectId = 136318;
             string signPassword = "67d9827f9c944051d5bf2823c94179fe";
 
-            Client client = new Client(projectId, signPassword);
+            //Client client = new Client(projectId, signPassword);
 
-            // Make a new request
-            MacroRequest request = client.NewMacroRequest();
+            //// Make a new request
+            //MacroRequest request = client.NewMacroRequest();
 
-            // Should be saved somewhere and unique for every request.
-            request.OrderId = "ORDER0001";
-            request.Amount = 1000;
-            request.Currency = "EUR";
-            request.Country = "LT";
-            request.AcceptUrl = siteUrl + "/Accept";
-            request.CancelUrl = siteUrl + "/Cancel";
-            request.CallbackUrl = siteUrl + "/MacroCallback";
+            //// Should be saved somewhere and unique for every request.
+            //request.OrderId = "ORDER0001";
+            //request.Amount = 1000;
+            //request.Currency = "EUR";
+            //request.Country = "LT";
+            //request.AcceptUrl = siteUrl + "/Accept";
+            //request.CancelUrl = siteUrl + "/Cancel";
+            //request.CallbackUrl = siteUrl + "/MacroCallback";
 
-            // Change this to "true" if you want to test
-            request.Test = false;
+            //// Change this to "true" if you want to test
+            //request.Test = false;
 
-            string redirectUrl = client.BuildRequestUrl(request);
-            return Redirect(redirectUrl);
+            //string redirectUrl = client.BuildRequestUrl(request);
+            //return Redirect(redirectUrl);
+
+            return View();
         }
         //
         // GET: /Store/AddToCart/5

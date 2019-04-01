@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Abp.Application.Services;
 using HostingStore.Products;
 
 namespace HostingStore.ProductService
 {
-    public interface IPromoCodeSerivice
+    public interface IPromoCodeSerivice : IApplicationService
     {
         Task<PromoCode> Create(string code, DateTime? createdOn, DateTime? ValidFrom, DateTime? validTo);
         Task<PromoCode> Delete(string code, DateTime? createdOn, DateTime? ValidFrom, DateTime? validTo);

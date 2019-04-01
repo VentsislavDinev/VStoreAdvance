@@ -1,0 +1,35 @@
+﻿@model HostingStore.ProductViewModel.PageViewModel
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators-->
+   
+    <div class="carousel-inner" role="listbox">
+        @foreach (var item in Model.ProductPromoHome)
+        {
+            <div class="item active">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h3>
+                            @item.Name
+
+                        </h3>
+                        <p>
+                            @item.Description
+                        </p>
+                        <a class="button2" href="/products/getbyid/@item.Id">Shop Now </a>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+    </div>
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>

@@ -1,4 +1,5 @@
-﻿using Abp.Domain.Repositories;
+﻿using Abp.Application.Services;
+using Abp.Domain.Repositories;
 using HostingStore.Products;
 using System;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HostingStore.ProductService
 {
-    public class DeleveryInformationService : IDeleveryInformationService
+    public class DeleveryInformationService : ApplicationService, IDeleveryInformationService
     {
         private IRepository<DeleveryInformation> _product;
 

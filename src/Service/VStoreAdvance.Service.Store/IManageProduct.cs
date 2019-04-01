@@ -1,11 +1,12 @@
 ﻿
+using Abp.Application.Services;
 using HostingStore.ProductViewModel;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace HostingStore.ProductService
 {
-    public interface IManageProduct
+    public interface IManageProduct : IApplicationService
     {
         Task CreateProduct(ProductManageViewModel model, string file, ICollection<string> specification, ICollection<string> category, 
             ICollection<string> specificationDetail, ICollection<string> brands);

@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Abp.Application.Services;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace HostingStore.ProductService
 {
-    public interface IDropdownListPopulator
+    public interface IDropdownListPopulator : IApplicationService
     {
         IEnumerable<SelectListItem> GetSpecification();
         IEnumerable<SelectListItem> GetSpecificationDetail();

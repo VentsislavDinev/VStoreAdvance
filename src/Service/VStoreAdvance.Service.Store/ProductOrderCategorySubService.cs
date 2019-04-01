@@ -1,4 +1,5 @@
-﻿using HostingStore.ProductViewModel;
+﻿using Abp.Application.Services;
+using HostingStore.ProductViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HostingStore.ProductService
 {
-    public class ProductOrderCategorySubService : IProductOrderCategorySubService
+    public class ProductOrderCategorySubService : ApplicationService, IProductOrderCategorySubService
     {
         private const int pageNumber = 100;
         private readonly IProductCategorySubService _productCategory;

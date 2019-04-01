@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Abp.Application.Services;
 using HostingStore.Products;
 
 namespace HostingStore.ProductService
 {
-    public interface IProductReviewService
+    public interface IProductReviewService : IApplicationService
     {
         Task<ProductReview> Create(string author, string comment, DateTime createdOn);
         Task<ProductReview> Delete(string author, string comment, DateTime createdOn);

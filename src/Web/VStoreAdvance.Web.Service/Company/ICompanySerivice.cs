@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using Abp.Application.Services;
+using System.Collections.Generic;
 using VAgency.Data.ViewModels;
 using VAgency.Service.User.Company;
 using VAgency.Services.Static;
 
 namespace VStoreAdvance.Web.Service.Company
 {
-    public interface ICompanySerivice
+    public interface ICompanySerivice: IApplicationService
     {
         IContact Contact { get; set; }
         IFeedBackCompany FeedBackCompany { get; set; }

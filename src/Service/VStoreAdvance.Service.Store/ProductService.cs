@@ -1,4 +1,5 @@
 ﻿
+using Abp.Application.Services;
 using Abp.Domain.Repositories;
 using HostingStore.Products;
 using System;
@@ -9,20 +10,16 @@ using VStoreAdvance.Data.EntityFramework;
 
 namespace HostingStore.ProductService
 {
-    public class ProductService : IProductService
+    public class ProductService : ApplicationService, IProductService
     {
         private readonly VStoreAdvanceDbContext dbContext = new VStoreAdvanceDbContext();
        
 
         private readonly IRepository<Product> _product;
-        /// <summary>
-        /// The repo
-        /// </summary>
-        private readonly IRepository<ManageProductReview> _repo;
+     
         private readonly IRepository<PromoCode> _category;
 
         private readonly IRepository<ProductCategory> _productCategory;
-        private readonly IRepository<ManageProductReview> _productReview;
         private readonly IRepository<ProductSubCategory> _productSubCategory;
         private readonly IRepository<ProductSpecification> _productSpecification;
         private readonly IRepository<ProductSpecificationDetail> _productSpecificationDetail;
@@ -35,18 +32,15 @@ namespace HostingStore.ProductService
             IRepository<ProductSubCategory> productSubCategory,
             IRepository<ProductSpecification> productSpecification,
             IRepository<ProductSpecificationDetail> productSpecificationDetail,
-            IRepository<ManageProductReview> productReview,
-            IRepository<ManageProductReview> repo,
+          
             IRepository<PromoCode> category,
             IRepository<ProductCategory> productCategory,
             IRepository<Order> order,
             IRepository<ProductBrand> productBrand)
         {
-            _repo = repo ?? throw new ArgumentNullException(nameof(repo));
             _category = category ?? throw new ArgumentNullException(nameof(category));
             _productCategory = productCategory ?? throw new ArgumentNullException(nameof(productCategory));
             _order = order ?? throw new ArgumentNullException(nameof(order));
-            _productReview = productReview ?? throw new ArgumentException(nameof(productReview));
             _product = product ?? throw new ArgumentException(nameof(product));
             _productSubCategory = productSubCategory ?? throw new ArgumentException(nameof(productSubCategory));
             _productSpecificationDetail = productSpecificationDetail ?? throw new ArgumentException(nameof(productSpecificationDetail));

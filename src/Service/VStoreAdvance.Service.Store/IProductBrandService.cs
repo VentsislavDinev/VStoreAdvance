@@ -1,10 +1,11 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Abp.Application.Services;
 using HostingStore.Products;
 
 namespace HostingStore.ProductService
 {
-    public interface IProductBrandService
+    public interface IProductBrandService : IApplicationService
     {
         Task<ProductBrand> Create(string name, string desc, string image);
         Task<ProductBrand> Delete(string name, string desc, string image);

@@ -45,27 +45,27 @@ namespace VStoreAdvance.Web.Controllers
         }
         
         
-        public async Task<ActionResult> OrderDetail()
-        {
+        //public async Task<ActionResult> OrderDetail()
+        //{
 
-            PageViewModel page = new PageViewModel
-            {
-                ListProductBrand = await _orderProduct.ListBrandByProduct(),
-                //OrderProduct = await _orderProduct.OrderProduct(id),
-                ListAllCategoryWithSubCategory = await _productOrderCategoryService.ListAllCategoryWithSubCategory(),
-                ProductPromoHome = await _productPromoHome.OrderProduct(),
-                SpecificationDetails = await _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
-                Specification = await _productSpecificationService.ProductSpecification(),
-                //DeleveryInformation = await _orderDeleveryInformation.GetSingleDeleveryInformation(),
-                StaticPage = _companySerivice.Page.GetAll().Select(x => new StaticPageViewModel
-                {
-                    Name = x.Name,
-                })
-                                   .ToList(),
+        //    PageViewModel page = new PageViewModel
+        //    {
+        //        ListProductBrand = await _orderProduct.ListBrandByProduct(),
+        //        //OrderProduct = await _orderProduct.OrderProduct(id),
+        //        ListAllCategoryWithSubCategory = await _productOrderCategoryService.ListAllCategoryWithSubCategory(),
+        //        ProductPromoHome = await _productPromoHome.OrderProduct(),
+        //        SpecificationDetails = await _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
+        //        Specification = await _productSpecificationService.ProductSpecification(),
+        //        //DeleveryInformation = await _orderDeleveryInformation.GetSingleDeleveryInformation(),
+        //        StaticPage = _companySerivice.Page.GetAll().Select(x => new StaticPageViewModel
+        //        {
+        //            Name = x.Name,
+        //        })
+        //                           .ToList(),
 
-            };
-            return View(page);
-        }
+        //    };
+        //    return View(page);
+        //}
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -139,16 +139,16 @@ namespace VStoreAdvance.Web.Controllers
         }
 
         //[OutputCache(Duration = 60*60, Location = System.Web.UI.OutputCacheLocation.ServerAndClient)]
-        public async Task<ActionResult> Index(int id = 1)
+        public ActionResult Index(int id = 1)
         {
             PageViewModel page = new PageViewModel
             {
-                ListProductBrand = await _orderProduct.ListBrandByProduct(),
-                OrderProduct = await _orderProduct.OrderProduct(id),
-                ListAllCategoryWithSubCategory = await _productOrderCategoryService.ListAllCategoryWithSubCategory(),
-                ProductPromoHome = await _productPromoHome.OrderProduct(),
-                SpecificationDetails = await _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
-                Specification = await _productSpecificationService.ProductSpecification(),
+                ListProductBrand =  _orderProduct.ListBrandByProduct(),
+                OrderProduct =  _orderProduct.OrderProduct(id),
+                ListAllCategoryWithSubCategory = _productOrderCategoryService.ListAllCategoryWithSubCategory(),
+                ProductPromoHome =  _productPromoHome.OrderProduct(),
+                SpecificationDetails = _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
+                Specification = _productSpecificationService.ProductSpecification(),
                 StaticPage = _companySerivice.Page.GetAll().Select(x => new StaticPageViewModel
                 {
                     Name = x.Name,
@@ -216,28 +216,7 @@ namespace VStoreAdvance.Web.Controllers
         //[OutputCache(Duration = 60 * 60 * 24)]
         public ActionResult GetStaticPage()
         {
-            System.Collections.Generic.List<StaticPageViewModel> getStaticPage = _companySerivice.Page.GetAll()
-           .Select(x => new StaticPageViewModel
-           {
-               Name = x.Name,
-           })
-           .ToList();
-            if (User.Identity.IsAuthenticated)
-            {
-                PageViewModel userPost = new PageViewModel
-                {
-                    StaticPage = getStaticPage,
-                };
-
-                return PartialView(userPost);
-            }
-
-            PageViewModel userRegister = new PageViewModel
-            {
-                StaticPage = getStaticPage,
-            };
-
-            return PartialView(userRegister);
+            return PartialView();
         }
 
         public ActionResult Specification()

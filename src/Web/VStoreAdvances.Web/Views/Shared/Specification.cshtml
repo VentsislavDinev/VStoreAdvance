@@ -1,0 +1,39 @@
+﻿@using HostingStore.Common;
+@using HostingStore.Data;
+@using HostingStore.Products;
+@using HostingStore.ProductService;
+
+@model HostingStore.ProductViewModel.PageViewModel
+
+@{
+    ViewBag.Title = "ListByBrand";
+    ApplicationDbContext dbContext = new ApplicationDbContext();
+
+
+    ProductOrderSpecificationDetailsService productOrder = new ProductOrderSpecificationDetailsService(
+            new ProductSpecificationDetailService(
+                new StoreSystemData(dbContext),
+                new GenericRepository<ProductSpecificationDetail>(dbContext)));
+
+}
+
+
+
+@foreach (var item in Model.Specification)
+{
+    <div class="left-side">
+        <h3 class="agileits-sear-head">@item.Name</h3>
+        <ul>
+            @{
+                var productSpecification = productOrder.ListProductSpecificationNotAsync(item.Id);
+            }
+
+            @foreach (var productSpecifications in productSpecification)
+            {
+               
+                <li><a href="/products/index?category=@TempData["category"]&categoryId=@TempData["categoryId"]&specification=@productSpecifications.Name&specificationId=@productSpecifications.SpecificationDetailId">@productSpecifications.Name</a></li>
+            }
+        </ul>
+    </div>
+
+}

@@ -1,4 +1,5 @@
 ﻿
+using Abp.Application.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using VStoreAdvance.Data.EntityFramework;
 
 namespace HostingStore.ProductService
 {
-    public class DropdownListPopulator : IDropdownListPopulator
+    public class DropdownListPopulator : ApplicationService, IDropdownListPopulator
     {
         private ICacheService cache;
         private VStoreAdvanceDbContext _data;

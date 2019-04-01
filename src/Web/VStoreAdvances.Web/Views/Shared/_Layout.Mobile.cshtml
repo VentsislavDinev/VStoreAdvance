@@ -1,0 +1,704 @@
+﻿@using HostingStore.Common;
+@using HostingStore.Data;
+@using HostingStore.Products;
+@using HostingStore.ProductService;
+
+@model  HostingStore.ProductViewModel.PageViewModel
+<!DOCTYPE html>
+<html lang="zxx">
+@{
+
+    ApplicationDbContext dbContext = new ApplicationDbContext();
+
+    ProductOrderCategoryService productOrder = new ProductOrderCategoryService(new ProductCategoryService(new StoreSystemData(dbContext), new GenericRepository<ProductReview>(dbContext), new GenericRepository<PromoCode>(dbContext), new GenericRepository<ProductCategory>(dbContext), new GenericRepository<Order>(dbContext)), new ProductCategorySubService(new StoreSystemData(dbContext), new GenericRepository<ProductSubCategory>(dbContext)));
+
+
+}
+<head>
+    <title>Grocery Shoppy an Ecommerce Category Bootstrap Responsive Web Template | Home :: w3layouts</title>
+    <!--/tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Grocery Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <meta name="verify-paysera" content="ced18e8e65d1daa87f255b2039cb4496">
+    <meta name="verify-paysera" content="5f19289b173cfa14574a4d7ddfb08c74">
+    <link href="~/css/notify-metro.css" rel="stylesheet" />
+    <!--//tags -->
+    <link href="~/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/css/font-awesome.css" rel="stylesheet">
+    <!--pop-up-box-->
+    <link href="~/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+    <!--//pop-up-box-->
+    <link href="~/css/easy-responsive-tabs.css" rel="stylesheet" />
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <!-- price range -->
+    <link rel="stylesheet" type="text/css" href="~/css/jquery-ui1.css">
+    <!-- fonts -->
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    @RenderSection("ScriptsCaurosel", false)
+    <link href="~/css/flexslider.css" rel="stylesheet" />
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+        m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(51830972, "init", {
+            id: 51830972,
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/51830972" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '686419425073270');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+             src="https://www.facebook.com/tr?id=686419425073270&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131906810-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-131906810-1');
+    </script>
+    <style>
+        /* Style the hamburger menu */
+        .topnav a.icon {
+            background: black;
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- header-bot-->
+    <div class="header-bot">
+        <div class="header-bot_inner_wthreeinfo_header_mid">
+            <!-- header-bot-->
+            <div class="col-md-4 logo_agile">
+                <h1>
+                    <a href="/">
+                        <span>H</span>osting
+                        <span>F</span>und
+                        <img src="/images/logo2.png" alt=" ">
+                    </a>
+                </h1>
+            </div>
+            <!-- header-bot -->
+            <div class="col-md-8 header">
+                <!-- header lists -->
+                <ul>
+
+                    <li>
+                        <span class="fa fa-phone" aria-hidden="true"></span> 0882629051
+                    </li>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>
+                            <a href="#">
+                                <span class="fa fa-pencil-square-o"></span> @User.Identity.Name
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#myModal1">
+                                <span class="fa fa-unlock-alt" aria-hidden="true"></span> Sign In
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#myModal2">
+                                <span class="fa fa-pencil-square-o" aria-hidden="true"></span> Sign Up
+                            </a>
+                        </li>
+                    }
+
+                </ul>
+                <!-- //header lists -->
+                <!-- cart details -->
+                @*<div class="top_nav_right">
+                        <div class="wthreecartaits wthreecartaits2 cart cart box_1">
+                            <form action="#" method="post" class="last">
+                                <input type="hidden" name="cmd" value="_cart">
+                                <input type="hidden" name="display" value="1">
+                                <button class="w3view-cart" type="submit" name="submit" value="">
+
+                                </button>
+                            </form>
+                        </div>
+                    </div>*@
+                <!-- //search -->
+                <!-- cart details -->
+                <div class="top_nav_right">
+                    <div class="wthreecartaits wthreecartaits2 cart cart box_1">
+                      
+                        @Html.Action("CartSummary")
+                          
+                    </div>
+                </div>
+                <!-- //cart details -->
+                <!-- //cart details -->
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body modal-body-sub_agile">
+                    <div class="main-mailposi">
+                        <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                    </div>
+                    <div class="modal_body_left modal_body_left1">
+                        <h3 class="agileinfo_sign">Sign In </h3>
+                        <p>
+                            Sign In now, Let's start your Grocery Shopping. Don't have an account?
+                            <a href="#" data-toggle="modal" data-target="#myModal2">
+                                Sign Up Now
+                            </a>
+                        </p>
+                        <form action="/account/login" method="post">
+                            @Html.AntiForgeryToken()
+                            <div class="styled-input agile-styled-input-top">
+                                <input type="text" placeholder="User Name" name="Name" required="">
+                            </div>
+                            <div class="styled-input">
+                                <input type="password" placeholder="Password" name="password" required="">
+                            </div>
+                            <input type="submit" value="Sign In">
+                        </form>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <!-- //Modal content-->
+        </div>
+    </div>
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body modal-body-sub_agile">
+                    <div class="main-mailposi">
+                        <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                    </div>
+                    <div class="modal_body_left modal_body_left1">
+                        <h3 class="agileinfo_sign">Sign Up</h3>
+                        <p>
+                            Come join the Grocery Shoppy! Let's set up your Account.
+                        </p>
+                        <form action="/account/register" method="post">
+                            @Html.AntiForgeryToken()
+                            <div class="styled-input">
+                                <input type="text" placeholder="Email" name="Email" id="password2" required="">
+                            </div>
+                            <div class="styled-input">
+                                <input type="password" placeholder="Confirm Password" name="Password" id="password2" required="">
+                            </div>
+                            <div class="styled-input">
+                                <input type="text" placeholder="Email" name="ConfirmPassword" id="password2" required="">
+                            </div>
+                            <input type="submit" value="Sign Up">
+                        </form>
+                        <p>
+                            <a href="#">By clicking register, I agree to your terms</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- //Modal content-->
+        </div>
+    </div>
+    <div class="ban-top">
+        <div class="container">
+            <div id="myLinks" style="display: none;">
+                @for (var i = 0; i < Model.ListAllCategoryWithSubCategory.Count(); i++)
+                {
+                    var item = Model.ListAllCategoryWithSubCategory.ElementAt(i);
+                    <li class="dropdown">
+                        <a href="#" id="dLabel" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false">
+                            @item.Category
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu multi-column columns-3" aria-labelledby="dLabel">
+                            <div class="agile_inner_drop_nav_info">
+                                @Html.MegaMenu(item.Id)
+                                @*@{
+
+                            var model = productOrder.ListOrderProductCategoryNotAsync(item.Id);
+                        }
+
+                        @for (int a = 0; a < model.Count(); a++)
+                        {
+                            //string category, string parentCategory, int? productId, string subParentCategory, int id = 1, string message = null
+                            HostingStore.ProductViewModel.ProductCategoryViewModel parentCategory = @model.ElementAt(a);
+
+                            <li><a href="/products/index/?category=@parentCategory.Category"> @parentCategory.Category</a></li>
+                            if (i > 0 && (i + 1) % 5 == 0)
+                            {
+                                @:</ul>
+                                @:</div>
+
+                                @:<div class="col-sm-4 multi-gd-img">
+                                @:<ul class="multi-column-dropdown">
+                            }
+                        }*@
+
+
+                                <div class="clearfix"></div>
+
+                            </div>
+                        </ul>
+                    </li>
+
+                }
+            </div>
+
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+    </div>
+
+    @RenderBody()
+
+    <!-- footer -->
+    <footer>
+        <div class="container">
+
+
+            <!-- footer third section -->
+            <div class="footer-info w3-agileits-info">
+                <!-- footer categories -->
+                @*<div class="col-sm-5 address-right">
+                        <div class="col-xs-6 footer-grids">
+                            <h3>Categories</h3>
+                            <ul>
+                                <li>
+                                    <a href="product.html">Grocery</a>
+                                </li>
+                                <li>
+                                    <a href="product.html">Fruits</a>
+                                </li>
+                                <li>
+                                    <a href="product.html">Soft Drinks</a>
+                                </li>
+                                <li>
+                                    <a href="product2.html">Dishwashers</a>
+                                </li>
+                                <li>
+                                    <a href="product.html">Biscuits & Cookies</a>
+                                </li>
+                                <li>
+                                    <a href="product2.html">Baby Diapers</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-6 footer-grids agile-secomk">
+                            <ul>
+                                <li>
+                                    <a href="product.html">Snacks & Beverages</a>
+                                </li>
+                                <li>
+                                    <a href="product.html">Bread & Bakery</a>
+                                </li>
+                                <li>
+                                    <a href="product.html">Sweets</a>
+                                </li>
+                                <li>
+                                    <a href="product.html">Chocolates & Biscuits</a>
+                                </li>
+                                <li>
+                                    <a href="product2.html">Personal Care</a>
+                                </li>
+                                <li>
+                                    <a href="product.html">Dried Fruits & Nuts</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>*@
+                <!-- //footer categories -->
+                <!-- quick links -->
+                <div class="col-sm-5 address-right">
+                    <div class="col-xs-6 footer-grids">
+                        <h3>Quick Links</h3>
+                        @Html.Action("GetStaticPage")
+                    </div>
+                    <div class="col-xs-6 footer-grids">
+                        <h3>Get in Touch</h3>
+                        <ul>
+                            <li>
+                                <i class="fa fa-map-marker"></i> Georgi Rakovski 1-A office 7
+                            </li>
+                            <li>
+                                <i class="fa fa-mobile"></i> +359882629051
+                            </li>
+                            <li>
+                               
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope-o"></i>
+                                <a href="mailto:example@mail.com"> mail@example.com</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- //quick links -->
+                <!-- social icons -->
+                <div class="col-sm-2 footer-grids  w3l-socialmk">
+                    <h3>Follow Us on</h3>
+                    <div class="social">
+                        <ul>
+                            <li>
+                                <a class="icon fb" href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="icon tw" href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="icon gp" href="#">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    @*<div class="agileits_app-devices">
+                            <h5>Download the App</h5>
+                            <a href="#">
+                                <img src="images/1.png" alt="">
+                            </a>
+                            <a href="#">
+                                <img src="images/2.png" alt="">
+                            </a>
+                            <div class="clearfix"> </div>
+                        </div>*@
+                </div>
+                <!-- //social icons -->
+                <div class="clearfix"></div>
+            </div>
+            <!-- //footer third section -->
+            <!-- footer fourth section (text) -->
+            <div class="agile-sometext">
+
+                <!-- payment -->
+                <div class="sub-some child-momu">
+                    <h5>Payment Method</h5>
+                    <ul>
+                        <li>
+                            <img src="~/images/pay2.png" alt="">
+                        </li>
+                        <li>
+                            <img src="~/images/pay5.png" alt="">
+                        </li>
+                        <li>
+                            <img src="~/images/pay1.png" alt="">
+                        </li>
+                        <li>
+                            <img src="~/images/pay4.png" alt="">
+                        </li>
+                        <li>
+                            <img src="~/images/pay6.png" alt="">
+                        </li>
+                        <li>
+                            <img src="~/images/pay3.png" alt="">
+                        </li>
+                        <li>
+                            <img src="~/images/pay7.png" alt="">
+                        </li>
+                        <li>
+                            <img src="~/images/pay8.png" alt="">
+                        </li>
+                        <li>
+                            <img src="~/images/pay9.png" alt="">
+                        </li>
+                    </ul>
+                </div>
+                <!-- //payment -->
+            </div>
+            <!-- //footer fourth section (text) -->
+        </div>
+    </footer>
+    <!-- //footer -->
+    <!-- copyright -->
+    <div class="copy-right">
+        <div class="container">
+            <p>
+                © @DateTime.Now.Year HostingStore. All rights reserved
+            </p>
+        </div>
+    </div>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <!-- //copyright -->
+    <!-- js-files -->
+    <!-- jquery -->
+    <script src="~/js/jquery-2.1.4.min.js"></script>
+    <!-- //jquery -->
+    <!-- popup modal (for signin & signup)-->
+    <script src="~/js/jquery.magnific-popup.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.popup-with-zoom-anim').magnificPopup({
+                type: 'inline',
+                fixedContentPos: false,
+                fixedBgPos: true,
+                overflowY: 'auto',
+                closeBtnInside: true,
+                preloader: false,
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-zoom-in'
+            });
+
+        });
+    </script>
+
+    <script src="~/Scripts/notify.js"></script>
+    <script src="~/Scripts/notify-metro.js"></script>
+    <script type="text/javascript">
+        $.notify.defaults({ autoHide: true })
+        //$.notify("Access granted", "success");
+
+        function notify(style) {
+            $.notify({
+                title: 'Успешно добавихте продукта към количката си',
+                text: '<a href="/home/checkout" class="btn btn-default"> Buy now </a> ',
+            }, {
+                    style: 'metro',
+                    className: style,
+                    autoHide: false,
+                    clickToHide: true,
+                    // whether to hide the notification on click
+                    
+                    // whether to auto-hide the notification
+                  
+                    // if autoHide, hide after milliseconds
+                    autoHideDelay: 500000,
+                    // show the arrow pointing at the element
+                    arrowShow: true,
+                    // arrow size in pixels
+                    arrowSize: 5,
+                    // position defines the notification position though uses the defaults below
+                    position: 'left',
+                    // default positions
+                    elementPosition: 'bottom left',
+                    globalPosition: 'top right',
+                    // default style
+                    // default class (string or [string])
+                    //className: 'sucess',
+                    // show animation
+                    showAnimation: 'slideDown',
+                    // show animation duration
+                    showDuration: 400,
+                    // hide animation
+                    hideAnimation: 'slideUp',
+                    // hide animation duration
+                    hideDuration: 200,
+                    // padding between element and notification
+                    gap: 2
+                });
+        }
+
+    </script>
+    <!-- Large modal -->
+    <!-- <script>
+        $('#').modal('show');
+    </script> -->
+    <!-- //popup modal (for signin & signup)-->
+    <!-- cart-js -->
+    @RenderSection("minicartJS", false)
+    <!-- //cart-js -->
+    <!-- price range (top products) -->
+    <script src="~/js/jquery-ui.js"></script>
+    <script>
+        //<![CDATA[
+        $(window).load(function () {
+            $("#slider-range").slider({
+                range: true,
+                min: 0,
+                max: 9000,
+                values: [0, 000],
+                slide: function (event, ui) {
+                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                }
+            });
+            $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+
+        }); //]]>
+    </script>
+    @RenderSection("Cart", false)
+    <!-- //price range (top products) -->
+    <!-- FlexSlider -->
+    <script src="~/js/jquery.flexslider.js"></script>
+    <script>
+        // Can also be used with $(document).ready()
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                controlNav: "thumbnails"
+            });
+        });
+    </script>
+    <!-- //FlexSlider-->
+    <!-- flexisel (for special offers) -->
+    <script src="~/js/jquery.flexisel.js"></script>
+    <script>
+        $(window).load(function () {
+            $("#flexiselDemo1").flexisel({
+                visibleItems: 3,
+                animationSpeed: 1000,
+                autoPlay: true,
+                autoPlaySpeed: 3000,
+                pauseOnHover: true,
+                enableResponsiveBreakpoints: true,
+                responsiveBreakpoints: {
+                    portrait: {
+                        changePoint: 480,
+                        visibleItems: 1
+                    },
+                    landscape: {
+                        changePoint: 640,
+                        visibleItems: 2
+                    },
+                    tablet: {
+                        changePoint: 768,
+                        visibleItems: 2
+                    }
+                }
+            });
+
+        });
+    </script>
+    <!-- //flexisel (for special offers) -->
+    <!-- password-script -->
+    <script>
+        window.onload = function () {
+            document.getElementById("password1").onchange = validatePassword;
+            document.getElementById("password2").onchange = validatePassword;
+        }
+
+        function validatePassword() {
+            var pass2 = document.getElementById("password2").value;
+            var pass1 = document.getElementById("password1").value;
+            if (pass1 != pass2)
+                document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+            else
+                document.getElementById("password2").setCustomValidity('');
+            //empty string means no validation error
+        }
+    </script>
+    <!-- //password-script -->
+    <!-- smoothscroll -->
+    <script src="~/js/SmoothScroll.min.js"></script>
+    <!-- //smoothscroll -->
+    <!-- start-smooth-scrolling -->
+    <script src="~/js/move-top.js"></script>
+    <script src="~/js/easing.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1000);
+            });
+        });
+    </script>
+    <!-- //end-smooth-scrolling -->
+    <!-- smooth-scrolling-of-move-up -->
+    <script>
+        $(document).ready(function () {
+            /*
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+            */
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+    <!-- //smooth-scrolling-of-move-up -->
+    <!-- for bootstrap working -->
+    <script src="~/js/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myLinks");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+    </script>
+    @RenderSection("scripts", false)
+
+</body>
+
+</html>

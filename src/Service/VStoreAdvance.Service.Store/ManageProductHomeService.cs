@@ -1,4 +1,5 @@
-﻿using HostingStore.ProductViewModel;
+﻿using Abp.Application.Services;
+using HostingStore.ProductViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HostingStore.ProductService
 {
-    public class ManageProductHomeService : IManageProductHomeService
+    public class ManageProductHomeService : ApplicationService, IManageProductHomeService
     {
         private IProductPromoHomeService _productPromoHomeService;
 

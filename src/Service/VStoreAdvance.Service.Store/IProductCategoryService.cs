@@ -1,10 +1,11 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Abp.Application.Services;
 using HostingStore.Products;
 
 namespace HostingStore.ProductService
 {
-    public interface IProductCategoryService
+    public interface IProductCategoryService : IApplicationService
     {
         Task<ProductCategory> Create(string category);
 

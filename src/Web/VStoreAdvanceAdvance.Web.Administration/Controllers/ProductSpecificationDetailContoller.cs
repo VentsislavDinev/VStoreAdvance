@@ -38,7 +38,7 @@ namespace HostingStore.Web.Areas.Administration.Controllers
         public async Task<ActionResult> Index(int? id)
         {
             var pageView = new PageViewModel {
-                 ProductDetails = await _productOrderSpecificationDetailsService.ListProductSpecificationDetail()
+                 ProductDetails = _productOrderSpecificationDetailsService.ListProductSpecificationDetail()
             };
 
             return View(pageView);

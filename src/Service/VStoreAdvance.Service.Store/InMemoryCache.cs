@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Abp.Application.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Web;
 
 namespace HostingStore.ProductService
 {
-    public class InMemoryCache : ICacheService
+    public class InMemoryCache : ApplicationService, ICacheService
     {
         public T Get<T>(string cacheID, Func<T> getItemCallback) where T : class
         {

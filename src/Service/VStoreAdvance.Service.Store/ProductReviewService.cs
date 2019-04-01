@@ -1,4 +1,5 @@
 ﻿
+using Abp.Application.Services;
 using Abp.Domain.Repositories;
 using HostingStore.Products;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HostingStore.ProductService
 {
-    public class ProductReviewService : IProductReviewService
+    public class ProductReviewService : ApplicationService, IProductReviewService
     {
         private readonly IRepository<Product> _product;
 

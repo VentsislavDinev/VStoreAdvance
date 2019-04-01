@@ -1,5 +1,6 @@
 ﻿namespace VAgency.Service.User.Company
 {
+    using Abp.Application.Services;
     using Abp.Domain.Repositories;
     using HostingStore.Products;
     using System;
@@ -8,7 +9,7 @@
     using System.Threading.Tasks;
     using VAgency.Data.ViewModels;
 
-    public class FeedBackCompany : IFeedBackCompany
+    public class FeedBackCompany : ApplicationService, IFeedBackCompany
     {
         /// <summary>
         /// The repo

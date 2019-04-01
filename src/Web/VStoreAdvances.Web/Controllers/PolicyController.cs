@@ -142,12 +142,12 @@ namespace VStoreAdvance.Web.Controllers
             {
                 PageViewModel userPost = new PageViewModel
                 {
-                    ListProductBrand = await _orderProduct.ListBrandByProduct(),
+                    ListProductBrand =  _orderProduct.ListBrandByProduct(),
                     //OrderProduct = await _orderProduct.OrderProduct(id),
-                    ListAllCategoryWithSubCategory = await _productOrderCategoryService.ListAllCategoryWithSubCategory(),
-                    ProductPromoHome = await _productPromoHome.OrderProduct(),
-                    SpecificationDetails = await _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
-                    Specification = await _productSpecificationService.ProductSpecification(),
+                    ListAllCategoryWithSubCategory =  _productOrderCategoryService.ListAllCategoryWithSubCategory(),
+                    ProductPromoHome =  _productPromoHome.OrderProduct(),
+                    SpecificationDetails =  _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
+                    Specification =  _productSpecificationService.ProductSpecification(),
                     GetSingleStaticPage = getById,
                 };
 
@@ -156,12 +156,12 @@ namespace VStoreAdvance.Web.Controllers
 
             PageViewModel userRegister = new PageViewModel
             {
-                ListProductBrand = await _orderProduct.ListBrandByProduct(),
+                ListProductBrand =  _orderProduct.ListBrandByProduct(),
                 //OrderProduct = await _orderProduct.OrderProduct(id),
-                ListAllCategoryWithSubCategory = await _productOrderCategoryService.ListAllCategoryWithSubCategory(),
-                ProductPromoHome = await _productPromoHome.OrderProduct(),
-                SpecificationDetails = await _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
-                Specification = await _productSpecificationService.ProductSpecification(),
+                ListAllCategoryWithSubCategory =  _productOrderCategoryService.ListAllCategoryWithSubCategory(),
+                ProductPromoHome =  _productPromoHome.OrderProduct(),
+                SpecificationDetails =  _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
+                Specification =  _productSpecificationService.ProductSpecification(),
                 GetSingleStaticPage = getById,
             };
 

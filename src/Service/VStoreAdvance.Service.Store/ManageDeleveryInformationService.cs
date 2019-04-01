@@ -1,4 +1,5 @@
-﻿using HostingStore.ProductViewModel;
+﻿using Abp.Application.Services;
+using HostingStore.ProductViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HostingStore.ProductService
 {
-    public class ManageDeleveryInformationService : IManageDeleveryInformationService
+    public class ManageDeleveryInformationService : ApplicationService, IManageDeleveryInformationService
     {
 
         private IDeleveryInformationService _productService;

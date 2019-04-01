@@ -1,10 +1,11 @@
-﻿using HostingStore.ProductViewModel;
+﻿using Abp.Application.Services;
+using HostingStore.ProductViewModel;
 using System;
 using System.Threading.Tasks;
 
 namespace HostingStore.ProductService
 {
-    public class ManageProductSpecificationDetailService : IManageProductSpecificationDetailService
+    public class ManageProductSpecificationDetailService : ApplicationService, IManageProductSpecificationDetailService
     {
 
         private IProductSpecificationDetailService _productSpecificationService;

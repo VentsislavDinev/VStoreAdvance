@@ -1,0 +1,12 @@
+﻿@model HostingStore.ProductViewModel.PageViewModel
+
+@{
+    ViewBag.Title = "ListByBrand";
+}
+
+@foreach (var item in Model.ListBrandByProduct)
+{
+
+
+<li><a href="/products/index?category=@TempData["category"]&categoryId=@TempData["categoryId"]&brand=@item.Name"> <span class="span"> @Html.DisplayFor(modelItem => item.Name)</span></a></li>
+}

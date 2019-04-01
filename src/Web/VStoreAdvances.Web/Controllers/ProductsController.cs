@@ -145,10 +145,10 @@ namespace VStoreAdvance.Web.Controllers
                         PageViewModel resultProductWithBrandAndSpecification = new PageViewModel
                         {
                             ListBrandByProduct = _productBrandOrder.GetTopBrand(),
-                            OrderProduct = await _orderProduct.OrderProduct(id),
-                            ListAllCategoryWithSubCategory = await _productOrderCategoryService.ListAllCategoryWithSubCategory(),
-                            SpecificationDetails = await _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
-                            Specification = await _productSpecificationService.ProductSpecification(getCategory.Id.ToString()),
+                            OrderProduct =  _orderProduct.OrderProduct(id),
+                            ListAllCategoryWithSubCategory =  _productOrderCategoryService.ListAllCategoryWithSubCategory(),
+                            SpecificationDetails =  _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
+                            Specification = await  _productSpecificationService.ProductSpecification(getCategory.Id.ToString()),
                         };
 
                         return View(resultProductWithBrandAndSpecification);
@@ -157,10 +157,10 @@ namespace VStoreAdvance.Web.Controllers
                     PageViewModel resultWithSpecification = new PageViewModel
                     {
                         ListBrandByProduct = _productBrandOrder.GetTopBrand(),
-                        OrderProduct = await _orderProduct.OrderProduct(id, categoryId, specId),
-                        ListAllCategoryWithSubCategory = await _productOrderCategoryService.ListAllCategoryWithSubCategory(),
-                        SpecificationDetails = await _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
-                        Specification = await _productSpecificationService.ProductSpecification(getCategory.Id.ToString()),
+                        OrderProduct = await  _orderProduct.OrderProduct(id, categoryId, specId),
+                        ListAllCategoryWithSubCategory =  _productOrderCategoryService.ListAllCategoryWithSubCategory(),
+                        SpecificationDetails =  _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
+                        Specification = await  _productSpecificationService.ProductSpecification(getCategory.Id.ToString()),
                     };
 
                     return View(resultWithSpecification);
@@ -173,10 +173,10 @@ namespace VStoreAdvance.Web.Controllers
                         PageViewModel resultProductWithBrandAndSpecification = new PageViewModel
                         {
                             ListBrandByProduct = _productBrandOrder.GetTopBrand(),
-                            OrderProduct = await _orderProduct.OrderProduct(id),
-                            ListAllCategoryWithSubCategory = await _productOrderCategoryService.ListAllCategoryWithSubCategory(),
-                            SpecificationDetails = await _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
-                            Specification = await _productSpecificationService.ProductSpecification(getCategory.Id.ToString()),
+                            OrderProduct =  _orderProduct.OrderProduct(id),
+                            ListAllCategoryWithSubCategory =  _productOrderCategoryService.ListAllCategoryWithSubCategory(),
+                            SpecificationDetails =  _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
+                            Specification = await  _productSpecificationService.ProductSpecification(getCategory.Id.ToString()),
                         };
 
                         return View(resultProductWithBrandAndSpecification);
@@ -184,9 +184,9 @@ namespace VStoreAdvance.Web.Controllers
                     PageViewModel resultWithSpecification = new PageViewModel
                     {
                         ListBrandByProduct = _productBrandOrder.GetTopBrand(),
-                        OrderProduct = await _orderProduct.OrderProduct(id, getCategory.Id, getBrand.Id),
-                        ListAllCategoryWithSubCategory = await _productOrderCategoryService.ListAllCategoryWithSubCategory(),
-                        SpecificationDetails = await _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
+                        OrderProduct = await  _orderProduct.OrderProduct(id, getCategory.Id, getBrand.Id),
+                        ListAllCategoryWithSubCategory =  _productOrderCategoryService.ListAllCategoryWithSubCategory(),
+                        SpecificationDetails =  _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
                         Specification = await _productSpecificationService.ProductSpecification(getCategory.Id.ToString()),
                     };
 
@@ -195,9 +195,9 @@ namespace VStoreAdvance.Web.Controllers
                 PageViewModel resultWithCategory = new PageViewModel
                 {
                     ListBrandByProduct = _productBrandOrder.GetTopBrand(),
-                    OrderProduct = await _orderProduct.OrderProduct(id, categoryId),
-                    ListAllCategoryWithSubCategory = await _productOrderCategoryService.ListAllCategoryWithSubCategory(),
-                    SpecificationDetails = await _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
+                    OrderProduct = await  _orderProduct.OrderProduct(id, categoryId),
+                    ListAllCategoryWithSubCategory =  _productOrderCategoryService.ListAllCategoryWithSubCategory(),
+                    SpecificationDetails =  _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
                     Specification = await _productSpecificationService.ProductSpecification(getCategory.Id.ToString()),
                 };
 
@@ -218,10 +218,10 @@ namespace VStoreAdvance.Web.Controllers
                     PageViewModel resultWithBrandAndSpecification = new PageViewModel
                     {
                         ListBrandByProduct = _productBrandOrder.GetTopBrand(),
-                        OrderProduct = await _orderProduct.OrderProduct(id),
-                        ListAllCategoryWithSubCategory = await _productOrderCategoryService.ListAllCategoryWithSubCategory(),
-                        SpecificationDetails = await _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
-                        Specification = await _productSpecificationService.ProductSpecification(category),
+                        OrderProduct =  _orderProduct.OrderProduct(id),
+                        ListAllCategoryWithSubCategory =  _productOrderCategoryService.ListAllCategoryWithSubCategory(),
+                        SpecificationDetails =  _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
+                        Specification = await  _productSpecificationService.ProductSpecification(category),
                     };
 
                     return View(resultWithBrandAndSpecification);
@@ -229,9 +229,9 @@ namespace VStoreAdvance.Web.Controllers
                 PageViewModel resultWithBrand = new PageViewModel
                 {
                     ListBrandByProduct = _productBrandOrder.GetTopBrand(),
-                    OrderProduct = await _orderProduct.OrderProduct(id),
-                    ListAllCategoryWithSubCategory = await _productOrderCategoryService.ListAllCategoryWithSubCategory(),
-                    SpecificationDetails = await _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
+                    OrderProduct =  _orderProduct.OrderProduct(id),
+                    ListAllCategoryWithSubCategory =  _productOrderCategoryService.ListAllCategoryWithSubCategory(),
+                    SpecificationDetails =  _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
                     Specification = await _productSpecificationService.ProductSpecification(category),
                 };
 
@@ -242,9 +242,9 @@ namespace VStoreAdvance.Web.Controllers
                 PageViewModel resultWithBrandAndSpecification = new PageViewModel
                 {
                     ListBrandByProduct = _productBrandOrder.GetTopBrand(),
-                    OrderProduct = await _orderProduct.OrderProduct(id),
-                    ListAllCategoryWithSubCategory = await _productOrderCategoryService.ListAllCategoryWithSubCategory(),
-                    SpecificationDetails = await _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
+                    OrderProduct =  _orderProduct.OrderProduct(id),
+                    ListAllCategoryWithSubCategory =  _productOrderCategoryService.ListAllCategoryWithSubCategory(),
+                    SpecificationDetails =  _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
                     Specification = await _productSpecificationService.ProductSpecification(category),
                 };
 
@@ -253,9 +253,9 @@ namespace VStoreAdvance.Web.Controllers
             PageViewModel resultWithCategoryWithPaged = new PageViewModel
             {
                 ListBrandByProduct = _productBrandOrder.GetTopBrand(),
-                OrderProduct = await _orderProduct.OrderProduct(id),
-                ListAllCategoryWithSubCategory = await _productOrderCategoryService.ListAllCategoryWithSubCategory(),
-                SpecificationDetails = await _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
+                OrderProduct =  _orderProduct.OrderProduct(id),
+                ListAllCategoryWithSubCategory =  _productOrderCategoryService.ListAllCategoryWithSubCategory(),
+                SpecificationDetails =  _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
                 Specification = await _productSpecificationService.ProductSpecification(category),
             };
 
@@ -267,9 +267,9 @@ namespace VStoreAdvance.Web.Controllers
             return new PageViewModel
             {
                 ListBrandByProduct = _productBrandOrder.GetTopBrand(),
-                OrderProduct = await _orderProduct.OrderProduct(id),
-                ListAllCategoryWithSubCategory = await _productOrderCategoryService.ListAllCategoryWithSubCategory(),
-                SpecificationDetails = await _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
+                OrderProduct =  _orderProduct.OrderProduct(id),
+                ListAllCategoryWithSubCategory = _productOrderCategoryService.ListAllCategoryWithSubCategory(),
+                SpecificationDetails =  _productOrderSpecificationDetailsService.ListProductSpecificationDetail(),
 
             };
         }
@@ -283,8 +283,8 @@ namespace VStoreAdvance.Web.Controllers
 
                 ListBrandByProduct = _productBrandOrder.GetTopBrand(),
                 GetProductById = await _orderProduct.SingleProduct(id),
-                OrderProduct = await _orderProduct.OrderProduct(Convert.ToInt32(id)),
-                ListAllCategoryWithSubCategory = await _productOrderCategoryService.ListAllCategoryWithSubCategory(),
+                OrderProduct =  _orderProduct.OrderProduct(Convert.ToInt32(id)),
+                ListAllCategoryWithSubCategory =  _productOrderCategoryService.ListAllCategoryWithSubCategory(),
                 SpecificationDetails = await _productOrderSpecificationDetailsService.ListProductSpecificationByProductName(getSingleProduct.Id),
                 Specification = await _productSpecificationService.ListProductSpecificationByProductName(Convert.ToInt32(id)),
                 ProductImage = await _productOrderImageService.ListProductImageByProductName(Convert.ToInt32(id)),

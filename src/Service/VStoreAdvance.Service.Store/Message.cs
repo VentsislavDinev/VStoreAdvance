@@ -1,5 +1,6 @@
 ﻿namespace VAgency.Service.User.Company
 {
+    using Abp.Application.Services;
     using Abp.Domain.Repositories;
     using HostingStore.Products;
     using System;
@@ -7,7 +8,7 @@
     using System.Threading.Tasks;
     using VAgency.Data.ViewModels.Company;
 
-    public class MessageCompany : IMessageCompany, IDisposable
+    public class MessageCompany : ApplicationService, IMessageCompany, IDisposable
     {
         /// <summary>
         /// The repo

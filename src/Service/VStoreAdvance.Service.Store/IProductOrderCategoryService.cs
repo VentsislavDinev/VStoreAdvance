@@ -1,12 +1,13 @@
-﻿using HostingStore.ProductViewModel;
+﻿using Abp.Application.Services;
+using HostingStore.ProductViewModel;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace HostingStore.ProductService
 {
-    public interface IProductOrderCategoryService
+    public interface IProductOrderCategoryService : IApplicationService
     {
-       Task<IList<ProductCategoryViewModel>> ListAllCategoryWithSubCategory();
+       IList<ProductCategoryViewModel> ListAllCategoryWithSubCategory();
        Task<ProductCategoryViewModel> ListAllCategoryWithSubCategory(string category);
        Task<ProductCategoryViewModel> SingleOrderProduct(int id);
        Task<IList<ProductCategoryViewModel>> OrderProduct(int id);

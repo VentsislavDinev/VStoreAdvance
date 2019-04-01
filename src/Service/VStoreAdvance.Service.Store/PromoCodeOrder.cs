@@ -1,11 +1,12 @@
 ﻿
+using Abp.Application.Services;
 using HostingStore.ProductViewModel;
 using System;
 using System.Linq;
 
 namespace HostingStore.ProductService
 {
-    public class PromoCodeOrder : IPromoCodeOrder
+    public class PromoCodeOrder : ApplicationService, IPromoCodeOrder
     {
         private const int pageNumber = 10;
         private IPromoCodeSerivice _productReview;

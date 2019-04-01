@@ -1,5 +1,6 @@
 ﻿namespace VAgency.Service.User
 {
+    using Abp.Application.Services;
     using Abp.Domain.Repositories;
     using HostingStore.Products.Company;
     using System;
@@ -10,7 +11,7 @@
     using VAgency.Services.Static;
     using VStoreAdvance.Web.Common.Crypto;
 
-    public class Page : IPage
+    public class Page : ApplicationService, IPage
     {
         /// <summary>
         /// The repository

@@ -1,12 +1,13 @@
 ﻿namespace VAgency.Service.User.Company
 {
+    using Abp.Application.Services;
     using HostingStore.Products;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using VAgency.Data.ViewModels;
 
-    public interface IFeedBackCompany
+    public interface IFeedBackCompany : IApplicationService
     {
         Task<CompanyFeedBackCompany> Create(CompanyFeedBackCompanyViewModel Collection);
 

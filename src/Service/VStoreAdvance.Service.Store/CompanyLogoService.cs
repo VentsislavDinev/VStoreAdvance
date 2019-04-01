@@ -1,4 +1,5 @@
-﻿using Abp.Domain.Repositories;
+﻿using Abp.Application.Services;
+using Abp.Domain.Repositories;
 using HostingStore.Products;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace VAgency.Service.User.Company
 {
-    public class CompanyLogoService : ICompanyLogoService
+    public class CompanyLogoService : ApplicationService, ICompanyLogoService
     {
         /// <summary>
         /// The repo

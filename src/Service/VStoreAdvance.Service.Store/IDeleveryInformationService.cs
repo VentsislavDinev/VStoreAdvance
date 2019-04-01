@@ -1,10 +1,11 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Abp.Application.Services;
 using HostingStore.Products;
 
 namespace HostingStore.ProductService
 {
-    public interface IDeleveryInformationService
+    public interface IDeleveryInformationService : IApplicationService
     {
         Task<DeleveryInformation> Create(string address, string city, string country, string number, string firstName, string lastName, string phone);
         Task<DeleveryInformation> Delete(string address, string city, string country, string number, string firstName, string lastName, string phone);

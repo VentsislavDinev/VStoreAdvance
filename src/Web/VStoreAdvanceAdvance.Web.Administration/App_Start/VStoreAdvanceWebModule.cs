@@ -2,20 +2,17 @@
 using Abp.Web.Mvc;
 using Abp.Web.Mvc.Configuration;
 using Abp.Web.SignalR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Optimization;
 using System.Web.Routing;
 using VEducaVStoreAdvancetionAppServiceBaseWebApi;
 using VStoreAdvance.Data.EntityFramework;
 using VStoreAdvance.Infrastructure.Core;
 using VStoreAdvance.Service;
+using VStoreAdvance.Service.Store;
 using VStoreAdvance.Web.App_Start;
 using VStoreAdvance.Web.Common;
+using VStoreAdvance.Web.Service;
 using VStoreAdvanceAdvance.Web.Administration;
 
 namespace VStoreAdvances.Web.App_Start
@@ -24,12 +21,13 @@ namespace VStoreAdvances.Web.App_Start
       typeof(VStoreAdvanceDataModule),
       typeof(VStoreAdvanceServiceCoreModule),
       typeof(VStoreAdvanceCoreModule),
-
+      typeof(StoreServiceModule),
+        typeof(WebServiceModule),
       typeof(WebCommonModule),
       typeof(VStoreAdvanceWebApiModule),
       typeof(AbpWebMvcModule),
       typeof(AbpWebSignalRModule) //Add AbpWebSignalRModule dependency
-      //typeof(AbpHangfireModule)
+                                  //typeof(AbpHangfireModule)
       )]
     public class VStoreAdvanceWebModule : AbpModule
     {
@@ -63,7 +61,7 @@ namespace VStoreAdvances.Web.App_Start
 
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            
+
         }
     }
 }

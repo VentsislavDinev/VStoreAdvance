@@ -1,11 +1,12 @@
 ﻿namespace VAgency.Services.Static
 {
+    using Abp.Application.Services;
     using HostingStore.Products.Company;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     
-    public interface IPage
+    public interface IPage : IApplicationService
     {
         Task<StaticPage> Create(DateTime createdOn, string name, string desc);
 

@@ -1,4 +1,5 @@
-﻿using HostingStore.ProductViewModel;
+﻿using Abp.Application.Services;
+using HostingStore.ProductViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HostingStore.ProductService
 {
-    public class ProductOrderSpecificationDetailsService : IProductOrderSpecificationDetailsService
+    public class ProductOrderSpecificationDetailsService : ApplicationService, IProductOrderSpecificationDetailsService
     {
         private IProductSpecificationDetailService _productSpecificationService;
 
@@ -95,10 +96,10 @@ namespace HostingStore.ProductService
             return getProductSpecification;
         }
 
-        public async Task<IEnumerable<ProductSpecificationDetailManageViewModel>> ListProductSpecificationDetail()
+        public IEnumerable<ProductSpecificationDetailManageViewModel> ListProductSpecificationDetail()
         {
 
-            List<ProductSpecificationDetailManageViewModel> getProductSpecification = await _productSpecificationService.GetAll()
+            List<ProductSpecificationDetailManageViewModel> getProductSpecification = _productSpecificationService.GetAll()
                 .Where(x=>x.ProductId == 0 | x.ProductId == null)
                 .Select(x => new ProductSpecificationDetailManageViewModel
                 {
@@ -107,7 +108,7 @@ namespace HostingStore.ProductService
                     Id = x.ProductSpecificationId,
                     Name = x.Name,
                     Description = x.Description,
-                }).ToListAsync();
+                }).ToList();
             return getProductSpecification;
 
         }

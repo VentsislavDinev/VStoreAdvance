@@ -1,4 +1,5 @@
-﻿using HostingStore.ProductViewModel;
+﻿using Abp.Application.Services;
+using HostingStore.ProductViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HostingStore.ProductService
 {
-    public class ProductOrderCategoryService : IProductOrderCategoryService
+    public class ProductOrderCategoryService : ApplicationService, IProductOrderCategoryService
     {
         private const int pageNumber = 100;
         private readonly IProductCategoryService _productCategory;
@@ -39,15 +40,15 @@ namespace HostingStore.ProductService
           
             return getAll;
         }
-        public async Task<IList<ProductCategoryViewModel>> ListAllCategoryWithSubCategory()
+        public IList<ProductCategoryViewModel> ListAllCategoryWithSubCategory()
         {
-            var getAll =await  _productCategory.GetAll()
+            var getAll =  _productCategory.GetAll()
                 
                 .Select(x => new ProductCategoryViewModel
                 {
                     Id = x.Id,
                     Category = x.Category,
-                }).ToListAsync();
+                }).ToList();
             return getAll;
         }
 

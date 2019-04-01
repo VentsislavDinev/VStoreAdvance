@@ -1,4 +1,5 @@
-﻿using HostingStore.ProductViewModel;
+﻿using Abp.Application.Services;
+using HostingStore.ProductViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HostingStore.ProductService
 {
-     public class ProductPromoHomeOrderService : IProductPromoHomeOrderService
+     public class ProductPromoHomeOrderService : ApplicationService, IProductPromoHomeOrderService
     {
         private const int pageNumber = 100;
         private readonly IProductPromoHomeService _productPromoHome;
@@ -17,9 +18,9 @@ namespace HostingStore.ProductService
             _productPromoHome = productPromoHome ?? throw new ArgumentNullException(nameof(productPromoHome));
         }
 
-        public async Task<IList<ProductHomeServiceViewModel>> OrderProduct()
+        public IList<ProductHomeServiceViewModel> OrderProduct()
         {
-            List<ProductHomeServiceViewModel> getAll = await _productPromoHome.GetAll()
+            List<ProductHomeServiceViewModel> getAll =  _productPromoHome.GetAll()
               
                 .OrderByDescending(x => x.Price)
                 .Select(x => new ProductHomeServiceViewModel
@@ -28,7 +29,7 @@ namespace HostingStore.ProductService
                      Avatar = x.Avatar,
                      Description = x.Description,
                       Name = x.Name
-                }).ToListAsync();
+                }).ToList();
 
             return getAll;
         }

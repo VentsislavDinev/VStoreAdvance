@@ -1,4 +1,5 @@
 ﻿
+using Abp.Application.Services;
 using Abp.Domain.Repositories;
 using HostingStore.Products;
 using System;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HostingStore.ProductService
 {
-    public class ProductCategoryService : IProductCategoryService
+    public class ProductCategoryService : ApplicationService, IProductCategoryService
     {
 
         /// <summary>

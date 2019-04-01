@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Abp.Application.Services;
 using HostingStore.ProductViewModel;
 
 namespace HostingStore.ProductService
 {
-    public interface IProductOrderCategorySubService
+    public interface IProductOrderCategorySubService : IApplicationService
     {
         Task<ProductCategoryViewModel> GetProductCategorySubCategory(string id);
         Task<IList<ProductCategoryViewModel>> OrderParrentProduct(int id);

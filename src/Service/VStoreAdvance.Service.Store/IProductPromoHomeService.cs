@@ -1,10 +1,11 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Abp.Application.Services;
 using HostingStore.Products;
 
 namespace HostingStore.ProductService
 {
-    public interface IProductPromoHomeService
+    public interface IProductPromoHomeService : IApplicationService
     {
         Task<ProductPromoHome> Create(string name, string desc, string avatar, double price);
         Task<ProductPromoHome> Delete(string name, string desc, string avatar, double price);

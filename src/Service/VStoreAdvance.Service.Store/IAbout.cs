@@ -1,11 +1,12 @@
 ﻿namespace VAgency.Service.User.Company
 {
+    using Abp.Application.Services;
     using HostingStore.Products;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    public interface IAbout
+    public interface IAbout : IApplicationService
     {
         IEnumerable<About> GetAll();
 

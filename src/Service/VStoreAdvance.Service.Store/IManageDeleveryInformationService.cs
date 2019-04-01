@@ -1,9 +1,10 @@
-﻿using HostingStore.ProductViewModel;
+﻿using Abp.Application.Services;
+using HostingStore.ProductViewModel;
 using System.Threading.Tasks;
 
 namespace HostingStore.ProductService
 {
-    public interface IManageDeleveryInformationService
+    public interface IManageDeleveryInformationService : IApplicationService
     {
         Task CreateProduct(DeleveryInformationViewModel model);
         Task DeleteProduct(DeleveryInformationViewModel model);

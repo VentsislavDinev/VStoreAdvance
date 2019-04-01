@@ -1,4 +1,5 @@
-﻿using HostingStore.ProductService;
+﻿using Abp.Application.Services;
+using HostingStore.ProductService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace VStoreAdvance.Web.Service.Browser
 {
-    public class BrowserConfig : IBrowserConfig
+    public class BrowserConfig : ApplicationService, IBrowserConfig
     {
         private ICacheService _cache;
 

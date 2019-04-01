@@ -1,4 +1,5 @@
-﻿using HostingStore.Products;
+﻿using Abp.Application.Services;
+using HostingStore.Products;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -6,7 +7,7 @@ using VAgency.Data.ViewModels;
 
 namespace VAgency.Service.User.Company
 {
-    public interface IService
+    public interface IService : IApplicationService
     {
         Task<CompanyInformation> Create(CompanyInformationViewViewModel colection, string file);
 

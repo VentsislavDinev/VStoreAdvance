@@ -1,4 +1,5 @@
 ﻿
+using Abp.Application.Services;
 using HostingStore.ProductViewModel;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using VStoreAdvance.Data.EntityFramework;
 
 namespace HostingStore.ProductService
 {
-    public class OrderProductList : IOrderProductList
+    public class OrderProductList : ApplicationService, IOrderProductList
     {
         private const int pageNumber = 100;
         private IProductService _productService;
@@ -154,7 +155,7 @@ namespace HostingStore.ProductService
         }
 
 
-        public async Task<ProductSearchViewModel> OrderProduct(int id)
+        public ProductSearchViewModel OrderProduct(int id)
         {
             int page = id;
 
@@ -163,13 +164,11 @@ namespace HostingStore.ProductService
             int allItemCount = _productService.GetAll().Count();
             int totalPagesFromDb = (int)Math.Ceiling(allItemCount / (decimal)pageNumber);
             int itemToSkipFromDb = (Convert.ToInt32(page) - 1) * pageNumber;
-
-       
-         
+            
           
             //var test = _productService.GetAll().Join(dbContext.ProductBrands, entryPoint => entryPoint.Id)
 
-            List<ProductCatalogViewModel> getAll = await _productService.GetAll()
+            List<ProductCatalogViewModel> getAll =  _productService.GetAll()
            
                 .OrderByDescending(x => x.CreatedOn)
                 .Skip(itemToSkipFromDb)
@@ -181,7 +180,7 @@ namespace HostingStore.ProductService
                     Description = x.Description,
                     Price = x.Price,
                     Avatar = x.Avatar,
-                }).ToListAsync();
+                }).ToList();
             ProductSearchViewModel searchEmpty = new ProductSearchViewModel
             {
 
@@ -224,15 +223,15 @@ namespace HostingStore.ProductService
         }
 
 
-        public async Task<IList<ProductSingleViewModel>> ListBrandByProduct()
+        public IList<ProductSingleViewModel> ListBrandByProduct()
         {
-            IList<ProductSingleViewModel> getAll = await _productService.GetAll()
+            IList<ProductSingleViewModel> getAll =  _productService.GetAll()
 
                .Select(x => new ProductSingleViewModel
                {
                    
                })
-               .ToListAsync();
+               .ToList();
             return getAll;
         }
 

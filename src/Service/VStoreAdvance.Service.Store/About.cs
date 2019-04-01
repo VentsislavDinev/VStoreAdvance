@@ -1,5 +1,6 @@
 ﻿namespace VAgency.Service.User.Company
 {
+    using Abp.Application.Services;
     using Abp.Domain.Repositories;
     using HostingStore.Products;
     using System;
@@ -8,7 +9,7 @@
     using System.Threading.Tasks;
     using VStoreAdvance.Web.Common.Crypto;
 
-    public class AboutSevice : IAbout
+    public class AboutSevice : ApplicationService, IAbout
     {
         /// <summary>
         /// The repo

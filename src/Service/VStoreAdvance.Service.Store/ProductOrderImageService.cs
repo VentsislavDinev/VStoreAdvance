@@ -1,4 +1,5 @@
-﻿using HostingStore.ProductViewModel;
+﻿using Abp.Application.Services;
+using HostingStore.ProductViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HostingStore.ProductService
 {
-    public class ProductOrderImageService : IProductOrderImageService
+    public class ProductOrderImageService : ApplicationService, IProductOrderImageService
     {
         private IProductImageService _productImage;
 
