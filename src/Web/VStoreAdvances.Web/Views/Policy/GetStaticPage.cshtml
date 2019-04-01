@@ -1,0 +1,6 @@
+﻿@model HostingStore.ProductViewModel.PageViewModel
+
+@foreach (var item in Model.StaticPage)
+{
+    <p><a href="/Policy/index/@item.Name">@item.Name</a> </p>
+}

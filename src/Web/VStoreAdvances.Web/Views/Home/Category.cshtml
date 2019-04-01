@@ -1,0 +1,54 @@
+﻿@using HostingStore.Common;
+@using HostingStore.Data;
+@using HostingStore.Products;
+@using HostingStore.ProductService;
+@model  IList<HostingStore.ProductViewModel.ProductCategoryViewModel>
+@{
+
+
+    ApplicationDbContext dbContext = new ApplicationDbContext();
+
+    ProductOrderCategoryService productOrder = new ProductOrderCategoryService(new ProductCategoryService(new StoreSystemData(dbContext), new GenericRepository<ProductReview>(dbContext), new GenericRepository<PromoCode>(dbContext), new GenericRepository<ProductCategory>(dbContext), new GenericRepository<Order>(dbContext)), new ProductCategorySubService(new StoreSystemData(dbContext), new GenericRepository<ProductSubCategory>(dbContext)));
+
+
+}
+<ul class="nav navbar-nav menu__list">
+    @for (var i = 0; i < Model.Count(); i++)
+    {
+        var item = Model.ElementAt(i);
+        IList<HostingStore.ProductViewModel.ProductCategoryViewModel> model = productOrder.ListOrderProductCategory(item.Id);
+        <li class="dropdown">
+            <a href="#" id="dLabel" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button"
+               aria-haspopup="true" aria-expanded="false">
+                @item.Category @item.Id
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu multi-column columns-3" aria-labelledby="dLabel">
+                <div class="agile_inner_drop_nav_info">
+
+                    @Html.MegaMenu(item.Id)
+                    <div class="clearfix"></div>
+                    <div class="col-sm-4 multi-gd-img">
+                        <ul class="multi-column-dropdown">
+                            @for (int a = 0; a < model.Count(); a++)
+                            {
+                                 var items = model.ElementAt(i);
+
+                                <li><a href="/products/index/{@items.Id}"> @items.Category</a></li>
+                                if (i > 0 && (i + 1) % 5 == 0)
+                                {
+                                    @:</ul>
+                                    @:</div>
+    
+                                    @:<div class="col-sm-4 multi-gd-img">
+                                        @:<ul class="multi-column-dropdown">
+                                }
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+            </ul>
+        </li>
+    }
+</ul>

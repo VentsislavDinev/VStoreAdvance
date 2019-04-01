@@ -1,0 +1,128 @@
+﻿@model HostingStore.ProductViewModel.ProductManageViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("", "", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>ProductManageViewModel</h4>
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StartPromoPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StartPromoPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StartPromoPrice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EndPromoPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EndPromoPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EndPromoPrice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PromoPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PromoPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PromoPrice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RealPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RealPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RealPrice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Avatar", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.TextBoxFor(m => m.Avatar, new { type = "file" })
+                @Html.ValidationMessageFor(m => m.Avatar, "", new { @class = "error" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                category
+            </label>
+            <div class="col-md-10">
+
+                @Html.DropDownList("category", Model.Category, new { multiple = "multiple" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2"> brand    </label>
+            <div class="col-md-10">
+
+                @Html.DropDownList("brands", Model.BrandProduct, new { multiple = "multiple" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2"> specification    </label>
+            <div class="col-md-10">
+
+                @Html.DropDownList("specification", Model.SpecificationId, new { multiple = "multiple" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2"> specification detail</label>
+            <div class="col-md-10">
+
+                @Html.DropDownList("specificationDetail", Model.SpecificicationDetailId, new { multiple = "multiple" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

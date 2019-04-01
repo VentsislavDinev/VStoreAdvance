@@ -1,0 +1,151 @@
+﻿@model HostingStore.ProductViewModel.ProductSingleViewModel
+<div class="services-breadcrumb">
+    <div class="agile_inner_breadcrumb">
+        <div class="container">
+            <ul class="w3_short">
+                <li>
+                    <a href="/">Home</a>
+                    <i>|</i>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="banner-bootom-w3-agileits">
+    <div class="container">
+        <h3 class="tittle-w3l">
+            @Model.Name
+            <span class="heading-style">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </h3>
+        <div class="col-md-5 single-right-left ">
+            <div class="grid images_3_of_2">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li data-thumb="/Files/uploads/@Model.Avatar">
+                            <div class="thumb-image">
+                                <img src="/Files/uploads/@Model.Avatar" data-imagezoom="true" class="img-responsive" alt="">
+                            </div>
+                        </li>
+                        <li data-thumb="/Files/uploads/@Model.Avatar">
+                            <div class="thumb-image">
+                                <img src="/Files/uploads/@Model.Avatar" data-imagezoom="true" class="img-responsive" alt="">
+                            </div>
+                        </li>
+                        <li data-thumb="/Files/uploads/@Model.Avatar">
+                            <div class="thumb-image">
+                                <img src="/Files/uploads/@Model.Avatar" data-imagezoom="true" class="img-responsive" alt="">
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7 single-right-left simpleCart_shelfItem">
+            <h3>@Model.Name </h3>
+            @*<div class="rating1">
+            <span class="starRating">
+                <input id="rating5" type="radio" name="rating" value="5">
+                <label for="rating5">5</label>
+                <input id="rating4" type="radio" name="rating" value="4">
+                <label for="rating4">4</label>
+                <input id="rating3" type="radio" name="rating" value="3" checked="">
+                <label for="rating3">3</label>
+                <input id="rating2" type="radio" name="rating" value="2">
+                <label for="rating2">2</label>
+                <input id="rating1" type="radio" name="rating" value="1">
+                <label for="rating1">1</label>
+            </span>
+        </div>*@
+            <p>
+                @if (Model.PromoPrice != 0 || Model.PromoPrice == null)
+                {
+                    <span class="item_price">$@Model.PromoPrice</span>
+                    <del>$@Model.Price</del>
+                }
+                <span class="item_price">$@Model.Price</span>
+
+                @*<label>Free delivery</label>*@
+            </p>
+            @*<div class="single-infoagile">
+            <ul>
+                <li>
+                    Cash on Delivery Eligible.
+                </li>
+                <li>
+                    Delivery to within 7 - 10 business days.
+                </li>
+                <li>
+                    Sold by Cloudtail India (4.2 out of 5 | 95,027 ratings).
+                </li>
+                <li>
+                    6 offer from
+                    <span class="item_price">$285.00</span>
+                </li>
+            </ul>
+        </div>*@
+            <div class="product-single-w3l">
+                <p>
+                    <i class="fa fa-hand-o-right" aria-hidden="true"></i>Информация за продукта
+                </p>
+                @Model.Description
+            </div>
+            <div class="occasion-cart">
+                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                    <form action="#" method="post">
+                        <fieldset>
+                            <input type="hidden" name="cmd" value="_cart">
+                            <input type="hidden" name="add" value="1">
+                            <input type="hidden" name="business" value=" ">
+                            <input type="hidden" name="item_name" value="@Model.Name">
+                            <input type="hidden" name="amount" value="@Model.Price">
+                            <input type="hidden" name="discount_amount" value="0.00">
+                            <input type="hidden" name="currency_code" value="BGN">
+                            <input type="hidden" name="return" value=" ">
+                            <input type="hidden" name="cancel_return" value=" ">
+                            <input type="submit" name="submit" value="Add to cart" class="button">
+                        </fieldset>
+                    </form>
+                </div>
+
+            </div>
+
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+                <li><a href="~/Administration/ProductSpecification/Create/@Model.Id">Add specification</a></li>
+                <li><a href="~/Administration/ProductSpecification/index/@Model.Id">List specification</a></li>
+                <li><a href="~/Administration/productImage/create/@Model.Id">Image</a></li>
+
+            </ul>
+            
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+@section minicartJS{
+    <script src="~/js/minicart.js"></script>
+    <script>
+        paypalm.minicartk.render(); //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
+
+        paypalm.minicartk.cart.on('checkout', function (evt) {
+            var items = this.items(),
+                len = items.length,
+                total = 0,
+                i;
+
+            // Count the number of each item in the cart
+            for (i = 0; i < len; i++) {
+                total += items[i].get('quantity');
+            }
+
+            if (total < 3) {
+                alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+                evt.preventDefault();
+            }
+        });
+    </script>
+}

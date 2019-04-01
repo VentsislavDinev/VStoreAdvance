@@ -1,0 +1,16 @@
+﻿using System.Linq;
+using System.Threading.Tasks;
+using HostingStore.Products;
+
+namespace HostingStore.ProductService
+{
+    public interface IProductCategorySubService
+    {
+        Task<ProductSubCategory> Create(string category, int id);
+        Task<ProductSubCategory> Delete(string category, int id);
+        IQueryable<ProductSubCategory> GetAll();
+        IQueryable<ProductSubCategory> GetById(int id);
+        IQueryable<ProductSubCategory> GetByName(string category);
+        Task<ProductSubCategory> Update(string category, int id);
+    }
+}

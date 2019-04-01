@@ -1,0 +1,33 @@
+﻿    <!-- mian-content -->
+<div class="banner-content" id="home">
+    <!-- header -->
+    <header class="header">
+        <div class="container-fluid px-lg-5">
+            <!-- nav -->
+            <nav class="py-4">
+                <div id="logo">
+                    <h1> <a href="index.html"><span>H</span>igh Edu</a></h1>
+                </div>
+
+                <label for="drop" class="toggle">Menu</label>
+                <input type="checkbox" id="drop" />
+                <ul class="menu mt-2">
+                    @Html.Action("TopMenu", "LayoutAdmin", new { activeMenu = ViewBag.ActiveMenu })
+                </ul>
+                @*<ul class="nav navbar-nav navbar-right">
+                        @Html.Action("LanguageSelection", "Layout")
+                        @Html.Action("UserMenuOrLoginLink", "Layout")
+                    </ul>*@
+            </nav>
+            <!-- //nav -->
+        </div>
+    </header>
+
+    <!--/banner-->
+    <div class="banner-info-w3pvt">
+        <h3>Are you ready to apply?</h3>
+        <p class="my-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the industry's standard dummy text ever since the 1500s, when an unknown printer.</p>
+
+    </div>
+    <!--// banner-inner -->
+</div>

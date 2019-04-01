@@ -1,0 +1,30 @@
+﻿@model HostingStore.ProductViewModel.PageViewModel
+
+
+@{
+    ViewBag.Title = "ListByBrand";
+}
+
+
+
+<div class="col-md-4 col-md-offset-3">
+    @for (int i = 0; i < Model.SpecificationDetails.Count(); i++)
+    {
+
+        var service = Model.SpecificationDetails.ElementAt(i);
+        <br />
+
+        <h3 class="agileits-sear-head">@service.Name</h3>
+        <span>@service.Description</span>
+        <br />
+
+        if (i > 0 && (i + 1) % 2 == 0)
+        {
+
+        @:</div>
+
+
+        @:<div class="col-md-3">
+        }
+    }<br /><br /><br />
+</div>      

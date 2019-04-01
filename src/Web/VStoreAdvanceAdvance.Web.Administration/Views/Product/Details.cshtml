@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Details";
+}<div class="col-md-10 col-md-offset-2">
+    <ul class="nav nav-tabs" role="tabpanel">
+        <li role="presentation" class="active">
+            <a href="#home" aria-expanded="false" data-toggle="tab" role="tab">Home</a>
+        </li>
+        <li role="presentation">
+            <a href="/Administration/Role">
+                Role
+            </a>
+        </li>
+        <li role="presentation">
+            <a href="/Administration/Product">
+                Product
+            </a>
+        </li>
+        @if (User.IsInRole("SuperUser"))
+        {
+            <li role="presentation">
+                <a href="/Administration/FeedbackCompany/">
+                    Feedback
+                </a>
+            </li>
+        }
+        <li role="presentation">
+            <a href="/Administration/Page">
+                Page
+            </a>
+        </li>
+        <li role="presentation">
+            <a href="/Administration/Contact">
+                Contact
+            </a>
+        </li>
+        <li role="presentation">
+            <a href="/Administration/CompanyMessage">
+                Message
+            </a>
+        </li>
+        <li role="presentation">
+            <a href="/Administration/About">
+                About
+            </a>
+        </li>
+        <li role="presentation">
+            <a href="/Administration/Service">
+                service
+            </a>
+        </li>
+        <li role="presentation">
+            <a href="/Administration/UsersAdmin">
+                user administration
+            </a>
+        </li>
+        <li role="presentation">
+        </li>
+    </ul>
+</div>
+<h2>Details</h2>

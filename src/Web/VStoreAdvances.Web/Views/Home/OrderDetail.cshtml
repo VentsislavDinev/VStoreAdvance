@@ -1,0 +1,92 @@
+﻿@model HostingStore.ProductViewModel.PageViewModel
+@{
+    ViewBag.Title = "OrderDetail";
+}
+
+@using (Html.BeginForm("OrderDetail", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @*<h4>Create a new account.</h4>*@
+    <hr />
+    <div class="col-md-6">
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.Address, new { @class = "col-md-2 control-label" })
+            <div class="col-md-7">
+                @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.StreetNumber, new { @class = "col-md-2 control-label" })
+            <div class="col-md-7">
+                @Html.TextBoxFor(m => m.StreetNumber, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.City, new { @class = "col-md-2 control-label" })
+            <div class="col-md-7">
+                @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Country, new { @class = "col-md-2 control-label" })
+            <div class="col-md-7">
+                @Html.TextBoxFor(m => m.Country, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+            <div class="col-md-7">
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+            <div class="col-md-7">
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Phone, new { @class = "col-md-2 control-label" })
+            <div class="col-md-7">
+                @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Register.Email, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Register.Email, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Register.Password, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.Register.Password, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Register.ConfirmPassword, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.Register.ConfirmPassword, new { @class = "form-control" })
+            </div>
+        </div>
+        <section>
+            <div class="form-group">
+                <br />
+                <div class="col-md-4 ">
+                    <span class="col-md-9">
+                        Ammount: € @Session["sumPrice"]
+                    </span>
+                </div>
+            </div>
+        </section>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="pay now" />
+            </div>
+        </div>
+    </div>
+}

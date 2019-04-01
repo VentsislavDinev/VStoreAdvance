@@ -1,0 +1,21 @@
+﻿@model IEnumerable<HostingStore.ProductViewModel.ProductCategoryViewModel>
+
+@{
+    ViewBag.Title = "IndexSubCategory";
+}
+
+<h2>IndexSubCategory</h2>
+
+<div>
+    <h4>ProductCategoryViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @foreach (var item in Model)
+        {
+            <dd>
+                @item.Category
+            </dd>
+        }
+
+    </dl>
+</div>

@@ -1,0 +1,15 @@
+﻿@model IEnumerable<HostingStore.ProductViewModel.ProductSpecificationDetailManageViewModel>
+@{
+    ViewBag.Title = "GetProductSpeficationDetails";
+}
+
+
+<h2>GetProductSpeficationDetails</h2>
+
+@foreach(var item in Model)
+{
+    <span>
+        @item.Name
+    </span>
+    <br />
+}

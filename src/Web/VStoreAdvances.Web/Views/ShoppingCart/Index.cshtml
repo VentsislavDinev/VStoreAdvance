@@ -1,0 +1,245 @@
+﻿@model HostingStore.ProductViewModel.PageViewModel
+
+<script src="/Scripts/jquery-1.4.4.min.js"
+        type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        // Document.ready -> link up remove event handler
+        $(".close1").click(function () {
+            // Get the id from the link
+            var recordToDelete = $(this).attr("data-id");
+            if (recordToDelete != '') {
+                // Perform the ajax post
+                $.post("/ShoppingCart/RemoveFromCart", { "id": recordToDelete },
+                    function (data) {
+                        // Successful requests get here
+                        // Update the page elements
+                        if (data.ItemCount == 0) {
+                            $('#row-' + data.DeleteId).fadeOut('slow');
+                        } else {
+                            $('#item-count-' + data.DeleteId).text(data.ItemCount);
+                        }
+                        $('#cart-total').text(data.CartTotal);
+                        $('#update-message').text(data.Message);
+                        $('#cart-status').text('Cart (' + data.CartCount + ')');
+                    });
+            }
+        });
+    });
+</script>
+
+<div class="privacy">
+    <div class="container">
+        <!-- tittle heading -->
+        <h3 class="tittle-w3l">
+            Checkout
+            <span class="heading-style">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </h3>
+        <!-- //tittle heading -->
+        <div class="checkout-right">
+            <h4>
+
+                Your shopping cart contains:
+                <span>@Model.ShoppingCart.CartItems.Count Products</span>
+            </h4>
+            <div class="table-responsive">
+                <table class="timetable_sub">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quality</th>
+                            <th>Product Name</th>
+
+                            <th>Price</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in
+Model.ShoppingCart.CartItems)
+                        {
+                            <tr class="rem1">
+
+                                <td class="invert-image">
+                                    <a href="/products/getbyid/@item.Product.Id">
+                                        <img src="/Files/uploads/@item.Product.Avatar" alt="" style="width: 150px; height: 150px;">
+
+                                    </a>
+                                </td>
+                                <td class="invert">
+                                    <div class="quantity">
+                                        <div class="quantity-select">
+                                            @*<div class="entry value-minus">&nbsp;</div>*@
+                                            <div class="entry value">
+                                                <span>@item.Count</span>
+                                            </div>
+                                            @*<div class="entry value-plus active">&nbsp;</div>*@
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="invert">
+                                    @Html.ActionLink(item.Product.Name,
+                                      "getbyid", "products", new { id = item.ProductId }, null)
+                                </td>
+                                <td class="invert">@item.Product.Price</td>
+                                <td class="invert">
+                                    <div class="rem">
+                                        <div class="close1" data-id="@item.RecordId"> </div>
+                                    </div>
+                                </td>
+
+                            </tr>
+
+                        }
+
+                        <script>
+                                fbq('track', 'AddToCart', {
+                                    value: @Model.ShoppingCart.CartTotal,
+                                    currency: 'bgn',
+                                });
+                        </script>
+                        <tr>
+                            <td>
+                                <span>All</span> @Model.ShoppingCart.CartTotal
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="checkout-left">
+            <div class="address_form_agile">
+                <h4>Add a new Details</h4>
+
+
+                @using (Html.BeginForm("OrderDetail", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @*<h4>Create a new account.</h4>*@
+                    <hr />
+                    <div class="col-md-6">
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Address, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.StreetNumber, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(m => m.StreetNumber, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.City, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Country, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(m => m.Country, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Phone, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-5 control-label">   pay with card?</label>
+                            <div class="col-md-7">
+                                <input type="checkbox" name="paymentMethod" class="form-control" />
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Register.Email, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(m => m.Register.Email, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Register.Password, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-7">
+                                @Html.PasswordFor(m => m.Register.Password, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Register.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-7">
+                                @Html.PasswordFor(m => m.Register.ConfirmPassword, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkout-right-basket">
+                        <button type="submit">
+                            Make a Payment
+                            <span class="fa fa-hand-o-right" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                }
+
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--quantity-->
+<script>
+    $('.value-plus').on('click', function () {
+        var divUpd = $(this).parent().find('.value'),
+            newVal = parseInt(divUpd.text(), 10) + 1;
+        divUpd.text(newVal);
+    });
+
+    $('.value-minus').on('click', function () {
+        var divUpd = $(this).parent().find('.value'),
+            newVal = parseInt(divUpd.text(), 10) - 1;
+        if (newVal >= 1) divUpd.text(newVal);
+    });
+</script>
+<!--quantity-->
+<script>
+    $(document).ready(function (c) {
+        $('.close1').on('click', function (c) {
+            $('.rem1').fadeOut('slow', function (c) {
+                $('.rem1').remove();
+            });
+        });
+    });
+</script>
+<!--//quantity-->
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
