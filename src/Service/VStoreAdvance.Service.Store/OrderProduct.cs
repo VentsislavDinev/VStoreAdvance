@@ -1,5 +1,7 @@
 ﻿
 using Abp.Application.Services;
+using Abp.Dapper.Repositories;
+using HostingStore.Products;
 using HostingStore.ProductViewModel;
 using System;
 using System.Collections.Generic;
@@ -13,20 +15,32 @@ namespace HostingStore.ProductService
     public class OrderProductList : ApplicationService, IOrderProductList
     {
         private const int pageNumber = 100;
+
         private IProductService _productService;
+
         private readonly IProductCategorySubService _productCategory;
+
         private readonly IProductBrandService _productBrandService;
+
         private readonly IProductImageService _productImage;
+
         private readonly IProductReviewService _productReview;
+
+        private readonly IDapperRepository<Product> _productOrder; 
+
         private readonly IProductOrderSpecificationService _productSpecificationService;
+
         private readonly IProductOrderSpecificationDetailsService _productOrderSpecificationDetailsService;
+
         VStoreAdvanceDbContext dbContext = new VStoreAdvanceDbContext();
         public OrderProductList(IProductService productService, IProductCategorySubService productCategory,
             IProductImageService productImage, IProductReviewService productReview, 
             IProductOrderSpecificationService productSpecificationService,
-            IProductOrderSpecificationDetailsService productOrderSpecificationDetailsService, IProductBrandService productBrandService)
+            IProductOrderSpecificationDetailsService productOrderSpecificationDetailsService, 
+            IProductBrandService productBrandService, IDapperRepository<Product> productOrder)
         {
             _productService = productService ?? throw new ArgumentNullException(nameof(productService));
+            _productOrder = productOrder ?? throw new ArgumentNullException(nameof(productOrder));
             _productCategory = productCategory ?? throw new ArgumentNullException(nameof(productCategory));
             _productImage = productImage ?? throw new ArgumentNullException(nameof(productImage));
             _productReview = productReview ?? throw new ArgumentNullException(nameof(productReview));
@@ -68,6 +82,10 @@ namespace HostingStore.ProductService
             return searchEmpty;
         }
 
+        public async Task GetAllWithDapper()
+        {
+            await _productOrder.GetAllAsync();
+        }
 
         public  async Task<ProductSearchViewModel> OrderProduct(int id, string category, string Brand)
         {

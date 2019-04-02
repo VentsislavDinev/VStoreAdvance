@@ -11,6 +11,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using VEducaVStoreAdvancetionAppServiceBaseWebApi;
+using VStoreAdvance.Data.Dapper;
 using VStoreAdvance.Data.EntityFramework;
 using VStoreAdvance.Infrastructure.Core;
 using VStoreAdvance.Service;
@@ -27,6 +28,7 @@ namespace VStoreAdvances.Web.App_Start
       typeof(VStoreAdvanceCoreModule),
       typeof(StoreServiceModule),
         typeof(WebServiceModule),
+        typeof(DapperModule),
       typeof(WebCommonModule),
       typeof(VStoreAdvanceWebApiModule),
       typeof(AbpWebMvcModule),

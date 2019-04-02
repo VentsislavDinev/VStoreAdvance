@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HostingStore.Products
 {
-    public class Product : Entity
+    public class Product : Entity, IEntity<int>
     {
         
         private ICollection<ProductSpecification> _productSpecification;

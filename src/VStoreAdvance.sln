@@ -39,10 +39,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VStoreAdvances.Web", "Web\V
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VStoreAdvanceAdvance.Web.Administration", "Web\VStoreAdvanceAdvance.Web.Administration\VStoreAdvanceAdvance.Web.Administration.csproj", "{3CC8D231-2039-4B37-B45C-87EBEAB79F19}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VStyoreAdvace.Web.WebApi.Server", "Web\VStyoreAdvace.Web.WebApi.Server\VStyoreAdvace.Web.WebApi.Server.csproj", "{6795BC51-6A8D-470C-9925-2C87E672A9FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VStoreAdvance.Data.Dapper", "Data\VStoreAdvance.Data.Dapper\VStoreAdvance.Data.Dapper.csproj", "{24180EB4-C2C3-45C5-ADD4-A7200830BC09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VStoreAdvance.Data.NHibernate", "Data\VStoreAdvance.Data.NHibernate\VStoreAdvance.Data.NHibernate.csproj", "{6AE9C1F5-6CB1-4577-99AF-54878D48844C}"
+EndProject
 Global
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -92,6 +95,18 @@ Global
 		{3CC8D231-2039-4B37-B45C-87EBEAB79F19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CC8D231-2039-4B37-B45C-87EBEAB79F19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CC8D231-2039-4B37-B45C-87EBEAB79F19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6795BC51-6A8D-470C-9925-2C87E672A9FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6795BC51-6A8D-470C-9925-2C87E672A9FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6795BC51-6A8D-470C-9925-2C87E672A9FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6795BC51-6A8D-470C-9925-2C87E672A9FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24180EB4-C2C3-45C5-ADD4-A7200830BC09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24180EB4-C2C3-45C5-ADD4-A7200830BC09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24180EB4-C2C3-45C5-ADD4-A7200830BC09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24180EB4-C2C3-45C5-ADD4-A7200830BC09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AE9C1F5-6CB1-4577-99AF-54878D48844C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AE9C1F5-6CB1-4577-99AF-54878D48844C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AE9C1F5-6CB1-4577-99AF-54878D48844C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AE9C1F5-6CB1-4577-99AF-54878D48844C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -111,8 +126,14 @@ Global
 		{709A1AAF-D048-46EE-8F8D-3F18A09BAD75} = {C757AEFB-CF3A-4C6A-BFC1-091C6B0786B2}
 		{DC264443-69B8-4757-AAB3-BCE804C300D4} = {C757AEFB-CF3A-4C6A-BFC1-091C6B0786B2}
 		{3CC8D231-2039-4B37-B45C-87EBEAB79F19} = {C757AEFB-CF3A-4C6A-BFC1-091C6B0786B2}
+		{6795BC51-6A8D-470C-9925-2C87E672A9FC} = {C757AEFB-CF3A-4C6A-BFC1-091C6B0786B2}
+		{24180EB4-C2C3-45C5-ADD4-A7200830BC09} = {5F2352E2-9B58-437B-9597-8175030D1ACC}
+		{6AE9C1F5-6CB1-4577-99AF-54878D48844C} = {5F2352E2-9B58-437B-9597-8175030D1ACC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2A81852A-422F-42B9-A183-4FDF419C8134}
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal
